@@ -11,13 +11,15 @@ makeCacheMatrix <- function(x = matrix())
   {
   
   ivx = NULL
-  
+
+## makeCacheMatrix: Set This function creates a special "matrix" object   
   set = function(y)
   {
     x <<- y
     ivx <<- NULL
   }
   
+## makeCacheMatrix: Get This function creates a special "matrix" object   
   get = function()
   {
     x
@@ -27,7 +29,9 @@ makeCacheMatrix <- function(x = matrix())
   {
     ivx <<- inverse
   }
-  
+
+ ## makeCacheMatrix: Set This function creates a special "matrix" object   
+ 
   getinverse = function()
   {
     ivx
@@ -38,13 +42,14 @@ makeCacheMatrix <- function(x = matrix())
   
 }
 
-
+## END makeCacheMatrix: 
 
 
 ## cheSolve: This function computes the inverse of the special "matrix" returned by makeCacheMatrix above. 
 ## If the inverse has already been calculated (and the matrix has not changed), 
 ## then the cachesolve should retrieve the inverse from the cache.
 
+## cheSolve: This function computes the inverse of the special "matrix" 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
 
@@ -53,8 +58,14 @@ cacheSolve <- function(x, ...) {
     message("Getting Cached Data")
     return(inverse)
   }
+
+## cheSolve: This function computes the inverse of the special "matrix" 
+
   
   inverse = solve(x$get())
   x$setinverse(inverse)
   inverse
 }
+## END cheSolve: This function computes the inverse of the special "matrix" 
+
+## End Of 2nd Function
